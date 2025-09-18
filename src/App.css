@@ -1,0 +1,63 @@
+/* this is custom css for height of image */
+
+.carousel-item img {
+  height: 400px;       /* fixed height */
+  object-fit: cover;   /* crops instead of stretching */
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .carousel-item img {
+    height: 500px;     /* tablets and up */
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-item img {
+    height: 600px;     /* desktops */
+  }
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.4); /* overlay effect */
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.carousel-caption h5 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fffadc; /* soft yellow to match navbar */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* glow for readability */
+}
+
+.carousel-caption p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+/* cards css */
+
+.card-img-top {
+  height: 200px;            /* fixed height for all card images */
+  object-fit: cover;        /* crop image to fill area */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+
+/* Custom CSS for services page images */
+.service-card-img {
+  max-height: 250px; /* You can adjust this value to control the image height */
+  width: 100%;
+  object-fit:contain; /* This is the key property that makes the whole image visible */
+  padding: 5px; /* Adds some space around the image */
+  border-bottom: 1px solid #e0e0e0; /* This creates the subtle border */
+  border-radius: 0.25rem 0.25rem 0 0; /* Matches the card's rounded top corners */
+}
+
+/* pagenotfound */
+
+
+
