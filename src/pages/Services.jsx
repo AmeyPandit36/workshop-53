@@ -6,7 +6,7 @@ function Services() {
       {/* TOP SECTION: IMAGE AND INTRO TEXT (UNCHANGED) */}
       <div className='row align-items-center'>
         <div className='col-lg-6 mb-4 mb-lg-0'>
-          <img src="/imgs/services.png" alt="Farmer using technology in a field" className='img-fluid rounded shadow-sm'/>
+          <img src="/imgs/services.webp" alt="Farmer using technology in a field" className='img-fluid rounded shadow-sm'/>
         </div>
 
         <div className='col-lg-6'>

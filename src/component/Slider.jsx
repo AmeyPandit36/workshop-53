@@ -11,21 +11,21 @@ function Slider() {
   </div>
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src="/imgs/hero1.jpg" className="d-block w-100" alt="..." />
+      <img src="/imgs/hero1.webp" className="d-block w-100" alt="..." />
       <div className="carousel-caption d-none d-md-block">
         <h5>Empowering Farmers with Fair Prices</h5>
         <p>Farmers can directly list their produce and connect with retailers, eliminating middlemen and ensuring fair income for their hard work.</p>
       </div>
     </div>
     <div className="carousel-item">
-      <img src="/imgs/hero6.jpg" className="d-block w-100" alt="..." />
+      <img src="/imgs/hero6.webp" className="d-block w-100" alt="..." />
       <div className="carousel-caption d-none d-md-block">
         <h5>Fresh Produce at Competitive Rates</h5>
         <p>Retailers get access to high-quality, fresh agricultural products directly from farmers at transparent and affordable prices.</p>
       </div>
     </div>
     <div className="carousel-item">
-      <img src="/imgs/hero3.jpg" className="d-block w-100" alt="..." />
+      <img src="/imgs/hero3.webp" className="d-block w-100" alt="..." />
       <div className="carousel-caption d-none d-md-block">
         <h5>Simple, Transparent, and Digital</h5>
         <p>KisaanTrade makes trading easy with a clean and user-friendly platform, designed for farmers and retailers to trade confidently.</p>
