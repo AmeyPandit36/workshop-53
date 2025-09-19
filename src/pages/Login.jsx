@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// Step 1: Import the useNavigate hook from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+  // Step 2: Initialize the navigate function
+  const navigate = useNavigate();
+
   // State for form inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   // State for loading and errors
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(''); // A single error message for the form
+  const [error, setError] = useState('');
 
   // --- Form Validation ---
   const validateForm = () => {
@@ -16,20 +20,17 @@ function Login() {
       setError('Both email and password are required.');
       return false;
     }
-    // Simple regex for email validation
     if (!/\S+@\S+\.\S+/.test(email)) {
       setError('Please enter a valid email address.');
       return false;
     }
-    setError(''); // Clear previous errors
+    setError('');
     return true;
   };
 
-  // --- Handle Form Submission ---
-  const handleLogin = (e) => {
+  // --- Handle Form Submission with a real API call ---
+  const handleLogin = async (e) => { // Mark the function as async
     e.preventDefault();
-
-    // Don't submit if validation fails
     if (!validateForm()) {
       return;
     }
@@ -37,22 +38,39 @@ function Login() {
     setIsLoading(true);
     setError('');
 
-    // --- Simulate an API call ---
-    console.log('Logging in with:', { email, password });
-    setTimeout(() => {
-      // ** In a real app, you would handle the response from your server here **
-      
-      // Example of a failed login
-      if (password === 'wrong') {
-        setError('Invalid email or password. Please try again.');
-      } else {
-        // Example of a successful login
-        alert('Login successful! Redirecting...');
-        // you would typically redirect the user here, e.g., using useNavigate()
+    try {
+      // --- This is the real API call ---
+      // Replace with your actual backend API endpoint
+      const response = await fetch('https://your-api-endpoint.com/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Use the error message from the server if it exists
+        throw new Error(data.message || 'Invalid credentials. Please try again.');
       }
-      
-      setIsLoading(false); // End loading state
-    }, 1500); // 1.5-second delay
+
+      // --- On SUCCESS ---
+      console.log('Login successful:', data);
+      // Optional: Save the authentication token from the response
+      // localStorage.setItem('authToken', data.token);
+
+      // Step 3: Redirect to another page (e.g., a user dashboard)
+      navigate('/dashboard'); 
+
+    } catch (err) {
+      // Handle errors from the API call (e.g., network issues, bad credentials)
+      setError(err.message);
+    } finally {
+      // This runs regardless of success or failure to stop the loading spinner
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -62,7 +80,6 @@ function Login() {
           
           {/* Left Column: Image */}
           <div className="col-md-6 p-0">
-            {/* Make sure the 'imgs' folder is in your 'public' directory */}
             <img
               src="/imgs/loginfarmer.png"
               className="img-fluid rounded-start"
@@ -74,7 +91,7 @@ function Login() {
           {/* Right Column: Login Form */}
           <div className="col-md-6 p-5">
             <h2 className="fw-bold mb-4">Login to Your Account</h2>
-            <form onSubmit={handleLogin} noValidate> {/* noValidate prevents default browser validation */}
+            <form onSubmit={handleLogin} noValidate>
               
               {/* --- Display General Error Message --- */}
               {error && <div className="alert alert-danger">{error}</div>}
@@ -136,6 +153,7 @@ function Login() {
                 Not a user? <Link to="/register" className="text-decoration-none fw-bold">Register here</Link>
               </p>
             </div>
+            
           </div>
         </div>
       </div>
